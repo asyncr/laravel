@@ -32,12 +32,12 @@
             <tr>
                 <td>{{$elec->id}}</td>
                 <td>{{$elec->periodo}}</td>
-                <td>{{$elec->fecha}}</td>
-                <td>{{$elec->fechaapertura->format("d-m-Y") }} </td>
-                <td>{{$elec->horaapertura}}</td>
-                <td>{{$elec->fechacierre}}</td>
+                <td>{{$elec->fecha-> format("d-m-Y")}}</td>
+                <td>{{$elec->fechaapertura->format("d-m-Y")}} </td>
+                <td>{{$elec->horaapertura -> format('H:i')}}</td>
+                <td>{{$elec->fechacierre ->format("d-m-Y")}}</td>
                 
-                <td >{{$elec->horacierre}}</td>
+                <td >{{$elec->horacierre -> format('H:i')}}</td>
                 
                 <td>{{$elec->observaciones}}</td>
                 <td><a href="{{ route('eleccion.edit', $elec->id)}}" class="btn btn-primary">Edit</a></td>

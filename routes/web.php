@@ -29,7 +29,11 @@ Route::resource('candidato',CandidatoController::class);
 Route::resource('eleccion',EleccionControler::class);
 Route::resource('voto',VotoController::class);
 
-
+/*
 Route::get('/login', [LoginController::class,'index']);
 Route::get('/login/facebook/', [LoginController::class,"redirectToFacebookProvider"]);
 Route::get('/login/facebook/callback', [LoginController::class,"handleProviderFacebookCallback"]);
+*/
+
+//TESTING Custom ROUTES 
+Route::get('/login', [LoginController::class,'showViewTest']);

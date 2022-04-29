@@ -42,6 +42,8 @@
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf" class="form-control" name="perfil" onchange="loadFile()" />
+                <div style="margin: 10px;"></div>
+                <embed src="src" id="src" style="width: 55vw; min-width: 140px;">
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>
@@ -54,30 +56,36 @@
         let a = document.getElementById("foto").files[0].size;
         a = (a / 1024);
         if (a > MAX_SIZE) {
-            alert("Imagen muy grande, tamaño actual "+ a );
+            alert("Imagen muy grande, tamaño actual " + a);
             //setear a null la eleccion
             document.getElementById('foto').value = null;
             // setear la imagen, en caso de que se haya elegido una anterior
-            document.getElementById("out-img").style.display='none';
+            document.getElementById("out-img").style.display = 'none';
         } else {
-            alert("Imagen aceptable "+"Tamanio >> " + a);
+            alert("Imagen aceptable " + "Tamanio >> " + a);
             // obtiene el id de la imagen
             let img = document.getElementById("out-img");
             // crea la preview de la imagen
             img.src = URL.createObjectURL(event.target.files[0]);
         }
     }
+
+
     let loadFile = () => {
         //Obtener el file
+        alert("LOOOOOL");
         let a = document.getElementById("perfil").files[0].size;
         //Dividir para tener una relacion con el tamaño de php.ini -> 2M
         a = (a / 1024);
         if (a > MAX_SIZE) {
-            alert("Imagen muy grande, tamaño actual "+ a +"MB");
+            alert("Imagen muy grande, tamaño actual " + a + "MB");
             //setear a null la eleccion
             document.getElementById('perfil').value = null;
         } else {
-            alert("Archivo aceptable "+"Tamanio >> " + a);
+            alert("Archivo aceptable " + "Tamanio >> " + a);
+            let src = document.getElementById("src");
+            console.log("Existe el -> "+ src)
+            src.src= URL.createObjectURL(event.target.files[0])
         }
     }
 </script>

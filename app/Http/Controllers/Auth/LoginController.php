@@ -40,4 +40,8 @@ class LoginController extends Controller
             dd($e -> getMessage());
         }
     }
+
+    public function showViewTest(){
+        return view('auth/welcome');
+    }
 }
