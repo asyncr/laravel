@@ -15,7 +15,7 @@
 				<div class="card-body">
 					<h1>Welcome To Your DashBord </h1>
                     
-                    <h2>User -> admin </h2>
+                    <h2>User admin </h2>
 				</div>
 			</div>
 		</div>

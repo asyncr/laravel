@@ -96,7 +96,7 @@ class VotoController extends Controller
             else
                 $message=$e->getMessage();
         }
-        return view('message',compact('message','Successfully'));
+        return view('message',compact('success','message'));
     }
 
     /**

@@ -19,24 +19,23 @@
             </ul>
         </div><br />
         @endif
-        <form method="post" action="{{ route('voto.store') }} " 
-        enctype="multipart/form-data">
-        
-            @csrf 
+        <form method="post" action="{{ route('voto.store') }} " enctype="multipart/form-data">
+
+            @csrf
             <div class="form-group">
                 <label for="eleccion">Eleción:</label>
                 <select name="eleccion_id" id="eleccion">
-                @foreach ($elecciones as $eleccion)
+                    @foreach ($elecciones as $eleccion)
                     <option value="{{$eleccion->id}}">{{$eleccion->periodo}}</option>
-                @endforeach
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="casilla">Casilla:</label>
                 <select name="casilla_id" id="casilla">
-                @foreach ($casillas as $casilla)
+                    @foreach ($casillas as $casilla)
                     <option value="{{$casilla->id}}">{{$casilla->ubicacion}}</option>
-                @endforeach
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
@@ -49,23 +48,23 @@
                     </thead>
                     <tbody>
                         @foreach ($candidatos as $candidato)
-                            <tr>
-                                <td>{{$candidato->nombrecompleto}}</td>
-                                <td>
-                                    <input type="number" name="candidato_{{$candidato->id}}" >
-                                </td>
-                            </tr>                    
+                        <tr>
+                            <td>{{$candidato->nombrecompleto}}</td>
+                            <td>
+                                <input type="number" name="candidato_{{$candidato->id}}">
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
 
-
+            <!-- 
             <div class="form-group">
                 <label for="evidencia">Evidencia:</label>
                 <input type="file" id="evidencia" accept="application/pdf"
                  class="form-control" name="evidencia" />
-            </div>
+            </div> -->
 
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>

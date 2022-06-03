@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as Auth;
-use Laravel\Socialite\Facades\Socialite as Socialite;
-use Exception;
+//use Socialite; #--- se agrega esta referencia
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //
+    use AuthenticatesUsers;
+
+    #--- se agrega esta método
     public function index()
     {
         return view('auth/login');
@@ -24,7 +27,6 @@ class LoginController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
-
     /**
      * Obtiene la información de Facebook
      *
@@ -32,16 +34,20 @@ class LoginController extends Controller
      */
     public function handleProviderFacebookCallback()
     {
-        try {
-            //code...
-            $auth_user = Socialite::driver('facebook')->user(); // Fetch authenticated user
-            dd($auth_user);
-        } catch (Exception $e) {
-            dd($e -> getMessage());
-        }
+        $auth_user = Socialite::driver('facebook')->user(); // Fetch authenticated user
+        //dd($auth_user);
+        return redirect("candidato");
+
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        
+        $request->session()->regenerateToken();
+        
+        return redirect("login");
     }
 
-    public function showViewTest(){
-        return view('auth/welcome');
-    }
-}
+}//--- End class
